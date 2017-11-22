@@ -41,8 +41,12 @@ namespace TheGameShop
 
             gameForm.BackColor = elementColor;
             gameForm.ForeColor = textColor;
-            description.BackColor = elementColor;
-            description.ForeColor = elementColor;
+            platformText.ForeColor = textColor;
+
+            //making it so when the text reaches the end of the screen in starts a new line (text wrapping).
+            platformText.MaximumSize = new Size(500, 0);
+            platformText.AutoSize = true;
+
 
             game.ForeColor = textColor;
 
@@ -59,8 +63,12 @@ namespace TheGameShop
             //try to add to the description
             try
             {
+                //Selecting the other columns from the database when the row contains the game.
+                String SQL = "SELECT * FROM Games WHERE Games = '" + gameForm.SelectedItem.ToString().Trim() + "'";
+                Console.WriteLine(SQL);
+
                 //getting the title of games from the Games table.
-                SqlCommand command = new SqlCommand("SELECT * FROM Games", connection);
+                SqlCommand command = new SqlCommand(SQL, connection);
 
 
 
@@ -69,32 +77,38 @@ namespace TheGameShop
                 //reading from the database.
                 while (reader.Read())
                 {
+                    
                     //Getting the ID column.
                     String ID = reader["ID"].ToString();
                     //Printing the ID.
                     Console.WriteLine("ID: " + ID);
 
-                    
+
 
                     //Getting the platform column
-                    String platform = reader["Platform"].ToString();
-                    Console.WriteLine("Platform: " + platform);
-                    description.Items.Add(platform);
+                    String gameInfo = "Platform: " + reader["Platform"].ToString() + "\n";
 
                     //Getting the Genre of the game
-                    String genre = reader["Genre"].ToString();
-                    Console.WriteLine("Genre: " + genre);
+                    gameInfo += "Genre: " + reader["Genre"].ToString() + "\n";
+                    gameInfo += "Age rating: " + reader["AgeRating"].ToString() + "\n";
+                    gameInfo += "Description: " + reader["Description"].ToString();
 
-                    //printing the age rating of the game.
-                    String age = reader["AgeRating"].ToString();
-                    Console.WriteLine("Age rating: " + age + "\n\n");
+                    platformText.Text = gameInfo;
 
+                    Console.WriteLine("Testring");
 
                 }
-            } catch
-            {
-                
+
+                reader.Close();
+
+
             }
+            catch (Exception error)
+            {
+                platformText.Text = error.ToString();
+            }
+
+
         }
 
         private void msg(String message)

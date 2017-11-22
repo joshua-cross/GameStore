@@ -50,15 +50,17 @@ namespace TheGameShop
         {
             this.gameForm = new System.Windows.Forms.ListBox();
             this.game = new System.Windows.Forms.Label();
-            this.description = new System.Windows.Forms.ListView();
+            this.platformText = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // gameForm
             // 
             this.gameForm.FormattingEnabled = true;
-            this.gameForm.Location = new System.Drawing.Point(154, 10);
+            this.gameForm.ItemHeight = 25;
+            this.gameForm.Location = new System.Drawing.Point(126, 33);
+            this.gameForm.Margin = new System.Windows.Forms.Padding(6);
             this.gameForm.Name = "gameForm";
-            this.gameForm.Size = new System.Drawing.Size(364, 615);
+            this.gameForm.Size = new System.Drawing.Size(482, 729);
             this.gameForm.TabIndex = 0;
             this.gameForm.SelectedIndexChanged += new System.EventHandler(this.gameForm_SelectedIndexChanged);
             // 
@@ -67,28 +69,32 @@ namespace TheGameShop
             this.game.AutoSize = true;
             this.game.BackColor = System.Drawing.Color.Transparent;
             this.game.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.game.Location = new System.Drawing.Point(542, 10);
+            this.game.Location = new System.Drawing.Point(671, 33);
+            this.game.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.game.Name = "game";
             this.game.Size = new System.Drawing.Size(145, 55);
             this.game.TabIndex = 1;
             this.game.Text = "game";
             // 
-            // description
+            // platformText
             // 
-            this.description.Location = new System.Drawing.Point(557, 84);
-            this.description.Name = "description";
-            this.description.Size = new System.Drawing.Size(511, 328);
-            this.description.TabIndex = 2;
-            this.description.UseCompatibleStateImageBehavior = false;
+            this.platformText.AutoSize = true;
+            this.platformText.Location = new System.Drawing.Point(676, 103);
+            this.platformText.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.platformText.Name = "platformText";
+            this.platformText.Size = new System.Drawing.Size(0, 25);
+            this.platformText.TabIndex = 2;
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1395, 637);
-            this.Controls.Add(this.description);
+            this.ClientSize = new System.Drawing.Size(1240, 795);
+            this.Controls.Add(this.platformText);
             this.Controls.Add(this.game);
             this.Controls.Add(this.gameForm);
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "Form1";
             this.Text = "Form1";
             this.ResumeLayout(false);
@@ -100,7 +106,7 @@ namespace TheGameShop
 
         private System.Windows.Forms.ListBox gameForm;
         private Label game;
-        private ListView description;
+        private Label platformText;
     }
 }
 
