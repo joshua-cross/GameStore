@@ -54,6 +54,7 @@ namespace TheGameShop
             this.addGame = new System.Windows.Forms.Button();
             this.editGame = new System.Windows.Forms.Button();
             this.deleteGame = new System.Windows.Forms.Button();
+            this.recieve = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // gameForm
@@ -117,11 +118,21 @@ namespace TheGameShop
             this.deleteGame.Text = "Remove";
             this.deleteGame.UseVisualStyleBackColor = true;
             // 
+            // recieve
+            // 
+            this.recieve.AutoSize = true;
+            this.recieve.Location = new System.Drawing.Point(130, 786);
+            this.recieve.Name = "recieve";
+            this.recieve.Size = new System.Drawing.Size(126, 25);
+            this.recieve.TabIndex = 6;
+            this.recieve.Text = "recieved ID:";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1240, 795);
+            this.ClientSize = new System.Drawing.Size(1240, 820);
+            this.Controls.Add(this.recieve);
             this.Controls.Add(this.deleteGame);
             this.Controls.Add(this.editGame);
             this.Controls.Add(this.addGame);
@@ -145,6 +156,7 @@ namespace TheGameShop
         private Button addGame;
         private Button editGame;
         private Button deleteGame;
+        private Label recieve;
     }
 }
 

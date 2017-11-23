@@ -17,13 +17,18 @@ namespace TheGameShop
         //a connection (from the form1 class)
         SqlConnection connection;
 
+        //the form that created this form.
+        Form1 sent;
 
         //Constructor that takes in the connection, and the Form1 that created it so we can update it's table when we press confirm.
-        public AddGame(SqlConnection thisConnection)
+        public AddGame(SqlConnection thisConnection, Form1 thisSent)
         {
             InitializeComponent();
 
             connection = thisConnection;
+
+            //setting sent to be what was sent through via constructor.
+            sent = thisSent;
         }
 
         //when the confirm button is pressed we want to add what the user has typed to the database.
@@ -53,8 +58,10 @@ namespace TheGameShop
                 //else we have effected 1 line which means it was added to the database.
                 else
                 {
-                    completed.Text = "Complete.";
+                    completed.Text = "completed";
+                    addGame();
                 }
+
 
                 //command.ExecuteNonQuery();
             } catch (Exception error)
@@ -64,5 +71,47 @@ namespace TheGameShop
             }
                  
         }
+
+        //adding the new game to the list.
+        private void addGame()
+        {
+            //sending the ID from the game that the user just added to the database.
+            String gameXML = "SELECT ID FROM Games WHERE Games = '" + textBox1.Text + "'";
+
+
+            try
+            {
+                SqlCommand command = new SqlCommand(gameXML, connection);
+
+
+                //completed.Text = gameXML;
+                SqlDataReader reader = command.ExecuteReader();
+                //setting ID to blank incase we can't find something.
+                String ID = "";
+
+
+                //reading from the database.
+                while (reader.Read())
+                {
+                    //setting ID to be what we found.
+                    ID = reader["ID"].ToString();
+                    //Printing the ID.
+                    completed.Text = ID;
+                    Console.WriteLine("ID: " + ID);
+
+                }
+
+                reader.Close();
+                //checking to see if the ID is not empty, if it's not we will send the ID.
+                if (!ID.Equals(""))
+                    sent.dbUpdated(ID);
+
+            }
+            catch (Exception error)
+            {
+                Console.WriteLine(error);
+            }
+        }
+
     }
 }

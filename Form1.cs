@@ -228,7 +228,7 @@ namespace TheGameShop
                 Console.ReadLine();
             }
 
-            gameForm.Items.Add("Hello");
+            //gameForm.Items.Add("Hello");
         }
 
         //function that disconnects with the server
@@ -245,9 +245,40 @@ namespace TheGameShop
         //when the add game button is clicked we want to open the addGame form (sending over the connection).
         private void addGame_Click(object sender, EventArgs e)
         {
-            AddGame newForm = new AddGame(connection);
+            AddGame newForm = new AddGame(connection, this);
 
             newForm.Show();
+        }
+
+        //when theres a change/ an addition to the database we want to update the listBox so we can see it.
+        public void dbUpdated(String ID)
+        {
+            String xml = "SELECT Games FROM Games WHERE ID = '" + ID + "'";
+
+            recieve.Text = "Recieved ID: " + ID;
+
+            //trying to display all this information in the database.
+            try
+            {
+                SqlCommand command = new SqlCommand(xml, connection);
+
+                SqlDataReader reader = command.ExecuteReader();
+
+                while(reader.Read())
+                {
+                    //Getting the games column
+                    String games = reader["Games"].ToString();
+                    recieve.Text = "Game for ID: " + ID + " is: " + games;
+                    gameForm.Items.Add(games);
+
+                }
+
+                reader.Close();
+            } catch (Exception error)
+            {
+                Console.WriteLine(error);
+                recieve.Text = error.ToString();
+            }
         }
     }
 }
