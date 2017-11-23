@@ -1,10 +1,10 @@
 c:\users\josh\documents\visual studio 2015\Projects\TheGameShop\TheGameShop\bin\Debug\TheGameShop.exe.config
 c:\users\josh\documents\visual studio 2015\Projects\TheGameShop\TheGameShop\bin\Debug\TheGameShop.exe
 c:\users\josh\documents\visual studio 2015\Projects\TheGameShop\TheGameShop\bin\Debug\TheGameShop.pdb
-c:\users\josh\documents\visual studio 2015\Projects\TheGameShop\TheGameShop\obj\Debug\TheGameShop.csprojResolveAssemblyReference.cache
 c:\users\josh\documents\visual studio 2015\Projects\TheGameShop\TheGameShop\obj\Debug\TheGameShop.Form1.resources
 c:\users\josh\documents\visual studio 2015\Projects\TheGameShop\TheGameShop\obj\Debug\TheGameShop.Properties.Resources.resources
 c:\users\josh\documents\visual studio 2015\Projects\TheGameShop\TheGameShop\obj\Debug\TheGameShop.csproj.GenerateResource.Cache
 c:\users\josh\documents\visual studio 2015\Projects\TheGameShop\TheGameShop\obj\Debug\TheGameShop.exe
 c:\users\josh\documents\visual studio 2015\Projects\TheGameShop\TheGameShop\obj\Debug\TheGameShop.pdb
 C:\Users\josh\documents\visual studio 2015\Projects\TheGameShop\TheGameShop\obj\Debug\TheGameShop.AddGame.resources
+C:\Users\josh\documents\visual studio 2015\Projects\TheGameShop\TheGameShop\obj\Debug\TheGameShop.EditGame.resources

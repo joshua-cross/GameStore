@@ -18,6 +18,9 @@ namespace TheGameShop
 
         SqlConnection connection;
 
+        //Strings for all the currently selected items, and setting them all to empty incase something goes wrong somewhere.
+        String gameSelected, genreSelected, platformSelected, ageSelected, descriptionSelected, IDSelected = "";
+
         public Form1()
         {
             InitializeComponent();
@@ -90,7 +93,12 @@ namespace TheGameShop
                     //Printing the ID.
                     Console.WriteLine("ID: " + ID);
 
-
+                    gameSelected = gameForm.SelectedItem.ToString();
+                    platformSelected = reader["Platform"].ToString().Trim();
+                    genreSelected = reader["Genre"].ToString().Trim();
+                    ageSelected = reader["AgeRating"].ToString();
+                    descriptionSelected = reader["Description"].ToString().Trim();
+                    IDSelected = reader["ID"].ToString();
 
                     //Getting the platform column
                     String gameInfo = "Platform: " + reader["Platform"].ToString() + "\n";
@@ -102,7 +110,6 @@ namespace TheGameShop
                     String desc = "Description: " + reader["Description"].ToString().Trim();
                     //calling the reduceString fucntion that checks if the string is to large, and if it is then we'll reduce it.
                     gameInfo += reduceString(desc, 1000);
-
 
                     platformText.Text = gameInfo;
 
@@ -237,9 +244,12 @@ namespace TheGameShop
             connection.Close();
         }
 
+        //when the edit button is pressed we want to go the editGame page.
         private void editGame_Click(object sender, EventArgs e)
         {
+            EditGame newForm = new EditGame(connection, this, gameSelected, platformSelected, genreSelected, ageSelected, descriptionSelected, IDSelected);
 
+            newForm.Show();
         }
 
         //when the add game button is clicked we want to open the addGame form (sending over the connection).
@@ -323,7 +333,7 @@ namespace TheGameShop
         }
 
         //function that removes the element from the list box.
-        private void removeFromListBox(String toRemove)
+        public void removeFromListBox(String toRemove)
         {
             recieve.Text = "removing: " + toRemove;
 

@@ -103,6 +103,7 @@ namespace TheGameShop
                 Console.WriteLine(error);
                 completed.Text = error.ToString();
             }
+            this.Close();
                  
         }
 
@@ -138,6 +139,7 @@ namespace TheGameShop
                 reader.Close();
                 //checking to see if the ID is not empty, if it's not we will send the ID.
                 if (!ID.Equals(""))
+                    //false as we are not updating an existing element.
                     sent.dbUpdated(ID);
 
             }
