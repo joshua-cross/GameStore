@@ -35,6 +35,8 @@ namespace TheGameShop
             Color elementColor = Color.FromArgb(17, 17, 17);
             //the text colour on the application
             Color textColor = Color.FromArgb(255, 255, 255);
+            //colour for the buttons on the page.
+            Color buttonColor = Color.FromArgb(200, 41, 48);
 
             //setting the background colour for the application.
             BackColor = bkg;
@@ -42,6 +44,11 @@ namespace TheGameShop
             gameForm.BackColor = elementColor;
             gameForm.ForeColor = textColor;
             platformText.ForeColor = textColor;
+
+            //the colours of the buttons.
+            addGame.BackColor = buttonColor;
+            deleteGame.BackColor = buttonColor;
+            editGame.BackColor = buttonColor;
 
             //making it so when the text reaches the end of the screen in starts a new line (text wrapping).
             platformText.MaximumSize = new Size(500, 0);
@@ -91,7 +98,11 @@ namespace TheGameShop
                     //Getting the Genre of the game
                     gameInfo += "Genre: " + reader["Genre"].ToString() + "\n";
                     gameInfo += "Age rating: " + reader["AgeRating"].ToString() + "\n";
-                    gameInfo += "Description: " + reader["Description"].ToString();
+
+                    String desc = "Description: " + reader["Description"].ToString().Trim();
+                    //calling the reduceString fucntion that checks if the string is to large, and if it is then we'll reduce it.
+                    gameInfo += reduceString(desc, 1000);
+
 
                     platformText.Text = gameInfo;
 
@@ -109,6 +120,40 @@ namespace TheGameShop
             }
 
 
+        }
+
+        //function that takes a string and reduces it to the size given by the user.
+        private String reduceString(String desc, int maxLength)
+        {
+
+            //if the user has given us an illegal string.
+            if(desc.Length < 0)
+            {
+                //throwing an error to the user.
+                throw new ArgumentOutOfRangeException("Length", "Length must be >= 0");
+            }
+
+            //if the user gives us a null string, return null.
+            if(desc == null)
+            {
+                return null;
+            }
+
+            // if the user has provided an int that's to long, then we will reduce it to the maximum length.
+            if(desc.Length > maxLength)
+            {
+                //the maximum length that the string can possibly be.
+                maxLength = Math.Min(desc.Length, maxLength);
+                //returning the trimmed string.
+                return desc.Substring(0, maxLength) + "...";
+            }
+            //else we are already below this length, so return the string as it was.
+            else
+            {
+                return desc;
+            }
+
+            
         }
 
         private void msg(String message)
@@ -192,6 +237,17 @@ namespace TheGameShop
             connection.Close();
         }
 
+        private void editGame_Click(object sender, EventArgs e)
+        {
 
+        }
+
+        //when the add game button is clicked we want to open the addGame form (sending over the connection).
+        private void addGame_Click(object sender, EventArgs e)
+        {
+            AddGame newForm = new AddGame(connection);
+
+            newForm.Show();
+        }
     }
 }

@@ -7,3 +7,4 @@ c:\users\josh\documents\visual studio 2015\Projects\TheGameShop\TheGameShop\obj\
 c:\users\josh\documents\visual studio 2015\Projects\TheGameShop\TheGameShop\obj\Debug\TheGameShop.csproj.GenerateResource.Cache
 c:\users\josh\documents\visual studio 2015\Projects\TheGameShop\TheGameShop\obj\Debug\TheGameShop.exe
 c:\users\josh\documents\visual studio 2015\Projects\TheGameShop\TheGameShop\obj\Debug\TheGameShop.pdb
+C:\Users\josh\documents\visual studio 2015\Projects\TheGameShop\TheGameShop\obj\Debug\TheGameShop.AddGame.resources

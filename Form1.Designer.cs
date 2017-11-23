@@ -51,6 +51,9 @@ namespace TheGameShop
             this.gameForm = new System.Windows.Forms.ListBox();
             this.game = new System.Windows.Forms.Label();
             this.platformText = new System.Windows.Forms.Label();
+            this.addGame = new System.Windows.Forms.Button();
+            this.editGame = new System.Windows.Forms.Button();
+            this.deleteGame = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // gameForm
@@ -60,7 +63,7 @@ namespace TheGameShop
             this.gameForm.Location = new System.Drawing.Point(126, 33);
             this.gameForm.Margin = new System.Windows.Forms.Padding(6);
             this.gameForm.Name = "gameForm";
-            this.gameForm.Size = new System.Drawing.Size(482, 729);
+            this.gameForm.Size = new System.Drawing.Size(482, 679);
             this.gameForm.TabIndex = 0;
             this.gameForm.SelectedIndexChanged += new System.EventHandler(this.gameForm_SelectedIndexChanged);
             // 
@@ -85,11 +88,43 @@ namespace TheGameShop
             this.platformText.Size = new System.Drawing.Size(0, 25);
             this.platformText.TabIndex = 2;
             // 
+            // addGame
+            // 
+            this.addGame.Location = new System.Drawing.Point(126, 731);
+            this.addGame.Name = "addGame";
+            this.addGame.Size = new System.Drawing.Size(130, 52);
+            this.addGame.TabIndex = 3;
+            this.addGame.Text = "Add Game";
+            this.addGame.UseVisualStyleBackColor = true;
+            this.addGame.Click += new System.EventHandler(this.addGame_Click);
+            // 
+            // editGame
+            // 
+            this.editGame.Location = new System.Drawing.Point(304, 731);
+            this.editGame.Name = "editGame";
+            this.editGame.Size = new System.Drawing.Size(126, 52);
+            this.editGame.TabIndex = 4;
+            this.editGame.Text = "Edit Game";
+            this.editGame.UseVisualStyleBackColor = true;
+            this.editGame.Click += new System.EventHandler(this.editGame_Click);
+            // 
+            // deleteGame
+            // 
+            this.deleteGame.Location = new System.Drawing.Point(482, 731);
+            this.deleteGame.Name = "deleteGame";
+            this.deleteGame.Size = new System.Drawing.Size(126, 52);
+            this.deleteGame.TabIndex = 5;
+            this.deleteGame.Text = "Remove";
+            this.deleteGame.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1240, 795);
+            this.Controls.Add(this.deleteGame);
+            this.Controls.Add(this.editGame);
+            this.Controls.Add(this.addGame);
             this.Controls.Add(this.platformText);
             this.Controls.Add(this.game);
             this.Controls.Add(this.gameForm);
@@ -107,6 +142,9 @@ namespace TheGameShop
         private System.Windows.Forms.ListBox gameForm;
         private Label game;
         private Label platformText;
+        private Button addGame;
+        private Button editGame;
+        private Button deleteGame;
     }
 }
 
