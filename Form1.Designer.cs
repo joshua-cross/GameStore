@@ -117,6 +117,7 @@ namespace TheGameShop
             this.deleteGame.TabIndex = 5;
             this.deleteGame.Text = "Remove";
             this.deleteGame.UseVisualStyleBackColor = true;
+            this.deleteGame.Click += new System.EventHandler(this.deleteGame_Click);
             // 
             // recieve
             // 

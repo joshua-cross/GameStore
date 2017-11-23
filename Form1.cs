@@ -280,5 +280,63 @@ namespace TheGameShop
                 recieve.Text = error.ToString();
             }
         }
+
+        //when the remove button is pressed we want to remove the specific row from the database.
+        private void deleteGame_Click(object sender, EventArgs e)
+        {
+            //the name of the selected game.
+            String selectedText = gameForm.SelectedItem.ToString().Trim();
+
+            //the XML statement.
+            String xml = "DELETE FROM Games WHERE Games = '" + selectedText + "'";
+
+            try
+            {
+                SqlCommand command = new SqlCommand(xml, connection);
+
+                int result = command.ExecuteNonQuery();
+
+                //if the result is less than 0 then we was not able to insert the new command into the database.
+                if (result < 0)
+                {
+                    Console.WriteLine("Error inserting to database.");
+                    recieve.Text = "Something went wrong.";
+                }
+                //else we have effected 1 line which means it was added to the database.
+                else
+                {
+                    recieve.Text = "completed";
+                    removeFromListBox(selectedText);
+                    
+
+                }
+
+               
+
+                //command.ExecuteNonQuery();
+            } 
+            catch (Exception error)
+            {
+                Console.WriteLine(error);
+                //recieve.Text = error.ToString();
+            }
+        }
+
+        //function that removes the element from the list box.
+        private void removeFromListBox(String toRemove)
+        {
+            recieve.Text = "removing: " + toRemove;
+
+            //for each element in the array.
+            for (int i = 0; i < gameForm.Items.Count; i = i + 1)
+            {
+                //if the current element is equals to the one we want to remove, then remove it.
+                if (gameForm.Items[i].ToString().Trim().Equals(toRemove.Trim()))
+                {
+                    recieve.BackColor = Color.FromArgb(255, 255, 255);
+                    gameForm.Items.RemoveAt(i);
+                }
+            }
+        }
     }
 }

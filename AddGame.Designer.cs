@@ -35,7 +35,7 @@
             this.platform = new System.Windows.Forms.Label();
             this.genre = new System.Windows.Forms.Label();
             this.age = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
+            this.description = new System.Windows.Forms.Label();
             this.confirm = new System.Windows.Forms.Button();
             this.completed = new System.Windows.Forms.Label();
             this.platformBox = new System.Windows.Forms.TextBox();
@@ -109,15 +109,15 @@
             this.age.TabIndex = 8;
             this.age.Text = "Age rating: ";
             // 
-            // label1
+            // description
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(-2, 168);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(97, 20);
-            this.label1.TabIndex = 9;
-            this.label1.Text = "Description: ";
+            this.description.AutoSize = true;
+            this.description.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.description.Location = new System.Drawing.Point(-2, 168);
+            this.description.Name = "description";
+            this.description.Size = new System.Drawing.Size(97, 20);
+            this.description.TabIndex = 9;
+            this.description.Text = "Description: ";
             // 
             // confirm
             // 
@@ -164,7 +164,7 @@
             this.Controls.Add(this.platformBox);
             this.Controls.Add(this.completed);
             this.Controls.Add(this.confirm);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.description);
             this.Controls.Add(this.age);
             this.Controls.Add(this.genre);
             this.Controls.Add(this.platform);
@@ -189,7 +189,7 @@
         private System.Windows.Forms.Label platform;
         private System.Windows.Forms.Label genre;
         private System.Windows.Forms.Label age;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label description;
         private System.Windows.Forms.Button confirm;
         private System.Windows.Forms.Label completed;
         private System.Windows.Forms.TextBox platformBox;
