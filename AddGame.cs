@@ -30,47 +30,6 @@ namespace TheGameShop
             //setting sent to be what was sent through via constructor.
             sent = thisSent;
 
-            //the background color of the website.
-            Color bkg = Color.FromArgb(25, 25, 25);
-            //the color of elements such as gameForm.
-            Color elementColor = Color.FromArgb(17, 17, 17);
-            //the text colour on the application
-            Color textColor = Color.FromArgb(255, 255, 255);
-            //colour for the buttons on the page.
-            Color buttonColor = Color.FromArgb(200, 41, 48);
-
-            textBox1.BackColor = elementColor;
-            textBox1.ForeColor = textColor;
-            gameName.ForeColor = textColor;
-
-            genreBox.ForeColor = textColor;
-            genreBox.BackColor = elementColor;
-            genre.ForeColor = textColor;
-
-            platform.ForeColor = textColor;
-            platformBox.BackColor = elementColor;
-            platformBox.ForeColor = textColor;
-
-            age.ForeColor = textColor;
-            ageRatingBox.BackColor = elementColor;
-            ageRatingBox.ForeColor = textColor;
-
-            descriptionBox.BackColor = elementColor;
-            descriptionBox.ForeColor = textColor;
-            description.ForeColor = textColor;
-
-            price.ForeColor = textColor;
-            priceBox.BackColor = elementColor;
-            priceBox.ForeColor = textColor;
-
-            stock.ForeColor = textColor;
-            stockBox.BackColor = elementColor;
-            stockBox.ForeColor = textColor;
-
-            confirm.BackColor = buttonColor;
-
-            BackColor = bkg;
-
         }
 
         //when the confirm button is pressed we want to add what the user has typed to the database.
@@ -158,5 +117,10 @@ namespace TheGameShop
             }
         }
 
+        //when the exit button is pressed, close this form.
+        private void exit_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

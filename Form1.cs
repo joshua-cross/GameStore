@@ -41,26 +41,15 @@ namespace TheGameShop
             //colour for the buttons on the page.
             Color buttonColor = Color.FromArgb(200, 41, 48);
 
-            //setting the background colour for the application.
-            BackColor = bkg;
-
-            gameForm.BackColor = elementColor;
-            gameForm.ForeColor = textColor;
-            platformText.ForeColor = textColor;
-
-            //the colours of the buttons.
-            addGame.BackColor = buttonColor;
-            deleteGame.BackColor = buttonColor;
-            editGame.BackColor = buttonColor;
-
-            searchText.ForeColor = textColor;
+            //how far we want the platformText to go before starting a new line.
+            int wrap = contentPanel.Width - 25;
 
             //making it so when the text reaches the end of the screen in starts a new line (text wrapping).
-            platformText.MaximumSize = new Size(500, 0);
+            platformText.MaximumSize = new Size(wrap, 0);
             platformText.AutoSize = true;
 
 
-            game.ForeColor = textColor;
+            //game.ForeColor = textColor;
 
             //if nothings selected then we are going to hide the stock counter so the user cannot select it.
             if (gameForm.SelectedIndex == -1)
@@ -69,6 +58,7 @@ namespace TheGameShop
                 stockBox.Visible = false;
                 confirm.Enabled = false;
                 confirm.Visible = false;
+                stock.Visible = false;
             }
 
             dbConnect();
@@ -87,6 +77,7 @@ namespace TheGameShop
                 stockBox.Visible = true;
                 confirm.Enabled = true;
                 confirm.Visible = true;
+                stock.Visible = true;
             }
 
             try
@@ -143,7 +134,7 @@ namespace TheGameShop
 
                     String desc = "Description: " + reader["Description"].ToString().Trim();
                     //calling the reduceString fucntion that checks if the string is to large, and if it is then we'll reduce it.
-                    gameInfo += reduceString(desc, 1000);
+                    gameInfo += reduceString(desc, 800);
 
                     platformText.Text = gameInfo;
 
@@ -273,7 +264,7 @@ namespace TheGameShop
         }
 
         //when the confirm button is clicked we want to update the stock for the selected game.
-        private void confirm_Click(object sender, EventArgs e)
+        private void confirm_Click_1(object sender, EventArgs e)
         {
             String SQL = "UPDATE Games SET Stock = '" + stockBox.Text.ToString().Trim() + "' WHERE Games = '" + gameForm.SelectedItem.ToString().Trim() + "';";
 
@@ -285,19 +276,34 @@ namespace TheGameShop
                 //howm many rows have been effected.
                 int result = command.ExecuteNonQuery();
 
-                if(result < 0)
+                if (result < 0)
                 {
                     Console.WriteLine("We have failed :(");
-                } else
+                }
+                else
                 {
                     Console.WriteLine("We have succedded :)");
                 }
 
 
-            } catch (Exception error)
+            }
+            catch (Exception error)
             {
                 Console.WriteLine(error.ToString());
             }
+
+            //hiding the buttons as it has been updated.
+            stockBox.Enabled = false;
+            stockBox.Visible = false;
+            confirm.Enabled = false;
+            confirm.Visible = false;
+            stock.Visible = false;
+        }
+
+        //when the exit button is pressed close the application.
+        private void exit_Click(object sender, EventArgs e)
+        {
+            System.Environment.Exit(1);
         }
 
         //function that disconnects with the server

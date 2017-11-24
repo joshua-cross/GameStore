@@ -24,6 +24,12 @@ namespace TheGameShop
         //the text for all the default values.
         String sGame, sPlatform, sGenre, sAge, sDescription, sID, sStock, sPrice;
 
+        //When the exit button is closed, close this form.
+        private void exit_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
         //when the edit button is pressed we want to update the database for the name.
         private void edit_Click(object sender, EventArgs e)
         {
