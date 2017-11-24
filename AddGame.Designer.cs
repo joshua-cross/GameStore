@@ -40,7 +40,13 @@
             this.completed = new System.Windows.Forms.Label();
             this.platformBox = new System.Windows.Forms.TextBox();
             this.genreBox = new System.Windows.Forms.TextBox();
+            this.stock = new System.Windows.Forms.Label();
+            this.stockBox = new System.Windows.Forms.NumericUpDown();
+            this.priceBox = new System.Windows.Forms.NumericUpDown();
+            this.price = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.ageRatingBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.stockBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.priceBox)).BeginInit();
             this.SuspendLayout();
             // 
             // textBox1
@@ -122,7 +128,7 @@
             // confirm
             // 
             this.confirm.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.confirm.Location = new System.Drawing.Point(197, 442);
+            this.confirm.Location = new System.Drawing.Point(197, 565);
             this.confirm.Name = "confirm";
             this.confirm.Size = new System.Drawing.Size(75, 29);
             this.confirm.TabIndex = 10;
@@ -133,7 +139,7 @@
             // completed
             // 
             this.completed.AutoSize = true;
-            this.completed.Location = new System.Drawing.Point(13, 484);
+            this.completed.Location = new System.Drawing.Point(13, 607);
             this.completed.Name = "completed";
             this.completed.Size = new System.Drawing.Size(49, 13);
             this.completed.TabIndex = 11;
@@ -155,11 +161,57 @@
             this.genreBox.Size = new System.Drawing.Size(171, 26);
             this.genreBox.TabIndex = 13;
             // 
+            // stock
+            // 
+            this.stock.AutoSize = true;
+            this.stock.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.stock.Location = new System.Drawing.Point(4, 418);
+            this.stock.Name = "stock";
+            this.stock.Size = new System.Drawing.Size(58, 20);
+            this.stock.TabIndex = 15;
+            this.stock.Text = "Stock: ";
+            // 
+            // stockBox
+            // 
+            this.stockBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.stockBox.Location = new System.Drawing.Point(101, 418);
+            this.stockBox.Name = "stockBox";
+            this.stockBox.Size = new System.Drawing.Size(171, 26);
+            this.stockBox.TabIndex = 16;
+            // 
+            // priceBox
+            // 
+            this.priceBox.DecimalPlaces = 2;
+            this.priceBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.priceBox.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+            this.priceBox.Location = new System.Drawing.Point(101, 450);
+            this.priceBox.Name = "priceBox";
+            this.priceBox.Size = new System.Drawing.Size(171, 26);
+            this.priceBox.TabIndex = 17;
+            // 
+            // price
+            // 
+            this.price.AutoSize = true;
+            this.price.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.price.Location = new System.Drawing.Point(7, 452);
+            this.price.Name = "price";
+            this.price.Size = new System.Drawing.Size(52, 20);
+            this.price.TabIndex = 18;
+            this.price.Text = "Price: ";
+            // 
             // AddGame
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(326, 509);
+            this.ClientSize = new System.Drawing.Size(326, 631);
+            this.Controls.Add(this.price);
+            this.Controls.Add(this.priceBox);
+            this.Controls.Add(this.stockBox);
+            this.Controls.Add(this.stock);
             this.Controls.Add(this.genreBox);
             this.Controls.Add(this.platformBox);
             this.Controls.Add(this.completed);
@@ -175,6 +227,8 @@
             this.Name = "AddGame";
             this.Text = "AddGame";
             ((System.ComponentModel.ISupportInitialize)(this.ageRatingBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.stockBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.priceBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -194,5 +248,9 @@
         private System.Windows.Forms.Label completed;
         private System.Windows.Forms.TextBox platformBox;
         private System.Windows.Forms.TextBox genreBox;
+        private System.Windows.Forms.Label stock;
+        private System.Windows.Forms.NumericUpDown stockBox;
+        private System.Windows.Forms.NumericUpDown priceBox;
+        private System.Windows.Forms.Label price;
     }
 }

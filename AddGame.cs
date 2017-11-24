@@ -59,6 +59,14 @@ namespace TheGameShop
             descriptionBox.ForeColor = textColor;
             description.ForeColor = textColor;
 
+            price.ForeColor = textColor;
+            priceBox.BackColor = elementColor;
+            priceBox.ForeColor = textColor;
+
+            stock.ForeColor = textColor;
+            stockBox.BackColor = elementColor;
+            stockBox.ForeColor = textColor;
+
             confirm.BackColor = buttonColor;
 
             BackColor = bkg;
@@ -68,9 +76,10 @@ namespace TheGameShop
         //when the confirm button is pressed we want to add what the user has typed to the database.
         private void confirm_Click(object sender, EventArgs e)
         {
-            String xml = "INSERT INTO Games (Games, Platform, Genre, AgeRating, Description) VALUES ('" + textBox1.Text + "','" +
+            String xml = "INSERT INTO Games (Games, Platform, Genre, AgeRating, Description, Stock, Pricer) VALUES ('" + textBox1.Text + "','" +
                 platformBox.Text + "','" + genreBox.Text + "','" +
-                ageRatingBox.Text + "','" + descriptionBox.Text + "');";
+                ageRatingBox.Text + "','" + descriptionBox.Text + "','" +
+                stockBox.Text + "','" + priceBox.Text + "');";
 
             //completed.Text = xml;
 

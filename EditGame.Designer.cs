@@ -40,7 +40,13 @@
             this.description = new System.Windows.Forms.Label();
             this.edit = new System.Windows.Forms.Button();
             this.results = new System.Windows.Forms.Label();
+            this.stock = new System.Windows.Forms.Label();
+            this.stockBox = new System.Windows.Forms.NumericUpDown();
+            this.price = new System.Windows.Forms.Label();
+            this.priceBox = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.ageBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.stockBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.priceBox)).BeginInit();
             this.SuspendLayout();
             // 
             // gameBox
@@ -136,7 +142,7 @@
             // 
             // edit
             // 
-            this.edit.Location = new System.Drawing.Point(290, 492);
+            this.edit.Location = new System.Drawing.Point(290, 613);
             this.edit.Name = "edit";
             this.edit.Size = new System.Drawing.Size(75, 23);
             this.edit.TabIndex = 10;
@@ -147,17 +153,63 @@
             // results
             // 
             this.results.AutoSize = true;
-            this.results.Location = new System.Drawing.Point(13, 519);
+            this.results.Location = new System.Drawing.Point(13, 640);
             this.results.Name = "results";
             this.results.Size = new System.Drawing.Size(40, 13);
             this.results.TabIndex = 11;
             this.results.Text = "Result:";
             // 
+            // stock
+            // 
+            this.stock.AutoSize = true;
+            this.stock.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.stock.Location = new System.Drawing.Point(12, 483);
+            this.stock.Name = "stock";
+            this.stock.Size = new System.Drawing.Size(54, 20);
+            this.stock.TabIndex = 13;
+            this.stock.Text = "Stock:";
+            // 
+            // stockBox
+            // 
+            this.stockBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.stockBox.Location = new System.Drawing.Point(192, 481);
+            this.stockBox.Name = "stockBox";
+            this.stockBox.Size = new System.Drawing.Size(173, 26);
+            this.stockBox.TabIndex = 12;
+            // 
+            // price
+            // 
+            this.price.AutoSize = true;
+            this.price.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.price.Location = new System.Drawing.Point(12, 515);
+            this.price.Name = "price";
+            this.price.Size = new System.Drawing.Size(52, 20);
+            this.price.TabIndex = 15;
+            this.price.Text = "Price: ";
+            // 
+            // priceBox
+            // 
+            this.priceBox.DecimalPlaces = 2;
+            this.priceBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.priceBox.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+            this.priceBox.Location = new System.Drawing.Point(192, 513);
+            this.priceBox.Name = "priceBox";
+            this.priceBox.Size = new System.Drawing.Size(173, 26);
+            this.priceBox.TabIndex = 14;
+            // 
             // EditGame
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(509, 544);
+            this.ClientSize = new System.Drawing.Size(509, 662);
+            this.Controls.Add(this.price);
+            this.Controls.Add(this.priceBox);
+            this.Controls.Add(this.stock);
+            this.Controls.Add(this.stockBox);
             this.Controls.Add(this.results);
             this.Controls.Add(this.edit);
             this.Controls.Add(this.description);
@@ -173,6 +225,8 @@
             this.Name = "EditGame";
             this.Text = "EditGame";
             ((System.ComponentModel.ISupportInitialize)(this.ageBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.stockBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.priceBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -192,5 +246,9 @@
         private System.Windows.Forms.Label description;
         private System.Windows.Forms.Button edit;
         private System.Windows.Forms.Label results;
+        private System.Windows.Forms.Label stock;
+        private System.Windows.Forms.NumericUpDown stockBox;
+        private System.Windows.Forms.Label price;
+        private System.Windows.Forms.NumericUpDown priceBox;
     }
 }

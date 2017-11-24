@@ -19,7 +19,7 @@ namespace TheGameShop
         SqlConnection connection;
 
         //Strings for all the currently selected items, and setting them all to empty incase something goes wrong somewhere.
-        String gameSelected, genreSelected, platformSelected, ageSelected, descriptionSelected, IDSelected = "";
+        String gameSelected, genreSelected, platformSelected, ageSelected, descriptionSelected, IDSelected, stockSelected, priceSelected = "";
 
         public Form1()
         {
@@ -52,6 +52,8 @@ namespace TheGameShop
             addGame.BackColor = buttonColor;
             deleteGame.BackColor = buttonColor;
             editGame.BackColor = buttonColor;
+
+            searchText.ForeColor = textColor;
 
             //making it so when the text reaches the end of the screen in starts a new line (text wrapping).
             platformText.MaximumSize = new Size(500, 0);
@@ -106,6 +108,8 @@ namespace TheGameShop
                     ageSelected = reader["AgeRating"].ToString();
                     descriptionSelected = reader["Description"].ToString().Trim();
                     IDSelected = reader["ID"].ToString();
+                    stockSelected = reader["Stock"].ToString();
+                    priceSelected = reader["Pricer"].ToString();
 
                     //Getting the platform column
                     String gameInfo = "Platform: " + reader["Platform"].ToString() + "\n";
@@ -113,6 +117,8 @@ namespace TheGameShop
                     //Getting the Genre of the game
                     gameInfo += "Genre: " + reader["Genre"].ToString() + "\n";
                     gameInfo += "Age rating: " + reader["AgeRating"].ToString() + "\n";
+                    gameInfo += "Current Stock: " + reader["Stock"].ToString() + "\n";
+                    gameInfo += "Current Price: £" + reader["Pricer"].ToString() + "\n";
 
                     String desc = "Description: " + reader["Description"].ToString().Trim();
                     //calling the reduceString fucntion that checks if the string is to large, and if it is then we'll reduce it.
@@ -332,7 +338,7 @@ namespace TheGameShop
         //when the edit button is pressed we want to go the editGame page.
         private void editGame_Click(object sender, EventArgs e)
         {
-            EditGame newForm = new EditGame(connection, this, gameSelected, platformSelected, genreSelected, ageSelected, descriptionSelected, IDSelected);
+            EditGame newForm = new EditGame(connection, this, gameSelected, platformSelected, genreSelected, ageSelected, descriptionSelected, IDSelected, stockSelected, priceSelected);
 
             newForm.Show();
         }

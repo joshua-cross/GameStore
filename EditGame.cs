@@ -22,13 +22,14 @@ namespace TheGameShop
         Form1 sent;
 
         //the text for all the default values.
-        String sGame, sPlatform, sGenre, sAge, sDescription, sID;
+        String sGame, sPlatform, sGenre, sAge, sDescription, sID, sStock, sPrice;
 
         //when the edit button is pressed we want to update the database for the name.
         private void edit_Click(object sender, EventArgs e)
         {
             String SQL = "UPDATE Games SET Games = '" + gameBox.Text.Trim() + "', Platform = '" + platformBox.Text.Trim() + "', Genre = '" + genreBox.Text.Trim()
-                + "', AgeRating = '" + ageBox.Text.Trim() + "', Description = '" + descriptionBox.Text + "' WHERE ID = '" + sID + "';";
+                + "', AgeRating = '" + ageBox.Text.Trim() + "', Description = '" + descriptionBox.Text +
+                "', Stock = '" + stockBox.Text.Trim() + "', Pricer = '" + priceBox.Text.Trim() + "' WHERE ID = '" + sID + "';";
 
             results.Text = SQL;
 
@@ -105,7 +106,7 @@ namespace TheGameShop
 
         //Constructor that takes in all the inmputs.
         public EditGame(SqlConnection thisConnection, Form1 thisSent, String thisGame, String thisPlatform,
-            String thisGenre, String thisAge, String thisDescription, String thisID)
+            String thisGenre, String thisAge, String thisDescription, String thisID, String thisStock, String thisPrice)
         {
             InitializeComponent();
 
@@ -118,6 +119,8 @@ namespace TheGameShop
             sAge = thisAge;
             sDescription = thisDescription;
             sID = thisID;
+            sStock = thisStock;
+            sPrice = thisPrice;
 
             //try to parse the age to an int.
             try
@@ -135,6 +138,8 @@ namespace TheGameShop
             platformBox.Text = sPlatform;
             genreBox.Text = sGenre;
             descriptionBox.Text = sDescription;
+            stockBox.Text = sStock;
+            priceBox.Text = sPrice;
 
         }
     }
