@@ -67,8 +67,15 @@ namespace TheGameShop
         //this is fired when something is selected from an item is selected from ListBox.
         private void gameForm_SelectedIndexChanged(object sender, System.EventArgs e)
         {
-            game.Text = gameForm.SelectedItem.ToString();
-            msg("Yes!");
+
+            try
+            {
+                game.Text = gameForm.SelectedItem.ToString();
+                msg("Yes!");
+            } catch (Exception error)
+            {
+                Console.WriteLine(error.ToString());
+            }
 
             //try to add to the description
             try
@@ -242,6 +249,84 @@ namespace TheGameShop
         public void dbDisconnect()
         {
             connection.Close();
+        }
+
+        //when the user types any letter in the search engine we will search the database for games that contain these characters.
+        private void searchBox_TextChanged(object sender, EventArgs e)
+        {
+            //searchText.Text = searchBox.Text.ToString().Trim();
+
+            //clearing all the items in the lsitbox.
+            gameForm.Items.Clear();
+
+            //checking to see if the seachtext is not empty.
+            if(!searchBox.Text.ToString().Trim().Equals(""))
+            {
+                //String that contains the searching SQL.
+                String sql = "SELECT Games FROM Games WHERE Games LIKE '" + searchBox.Text + "%' OR Genre LIKE '" + searchBox.Text + "%'"
+                    + " OR Platform LIKE '" + searchBox.Text + "%';" ;
+                //searchText.Text = sql;
+
+                try
+                {
+                    SqlCommand command = new SqlCommand(sql, connection);
+
+                    SqlDataReader reader = command.ExecuteReader();
+
+                    while(reader.Read())
+                    {
+                        //adding all the games to the list.
+                        String games = reader["Games"].ToString();
+                        gameForm.Items.Add(games);
+                    }
+
+                    reader.Close();
+                } catch (Exception error)
+                {
+                    searchText.Text = error.ToString();
+                }
+            }
+            //if the search box is now empty we want to fill the array back up with all the values.
+            else
+            {
+                //searchText.Text = "now empty";
+
+                try
+                {
+
+                    Console.WriteLine("we're in \n");
+
+                    //getting the title of games from the Games table.
+                    SqlCommand command = new SqlCommand("SELECT Games FROM Games", connection);
+
+
+
+                    SqlDataReader reader = command.ExecuteReader();
+
+                    //reading from the database.
+                    while (reader.Read())
+                    {
+
+                        //Getting the games column
+                        String games = reader["Games"].ToString();
+                        gameForm.Items.Add(games);
+
+
+
+                    }
+
+
+                    reader.Close();
+
+
+                }
+                catch (Exception error)
+                {
+                    Console.WriteLine(error);
+                }
+            }
+
+            
         }
 
         //when the edit button is pressed we want to go the editGame page.

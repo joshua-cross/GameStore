@@ -55,13 +55,15 @@ namespace TheGameShop
             this.editGame = new System.Windows.Forms.Button();
             this.deleteGame = new System.Windows.Forms.Button();
             this.recieve = new System.Windows.Forms.Label();
+            this.searchBox = new System.Windows.Forms.TextBox();
+            this.searchText = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // gameForm
             // 
             this.gameForm.FormattingEnabled = true;
             this.gameForm.ItemHeight = 25;
-            this.gameForm.Location = new System.Drawing.Point(126, 33);
+            this.gameForm.Location = new System.Drawing.Point(231, 36);
             this.gameForm.Margin = new System.Windows.Forms.Padding(6);
             this.gameForm.Name = "gameForm";
             this.gameForm.Size = new System.Drawing.Size(482, 679);
@@ -73,7 +75,7 @@ namespace TheGameShop
             this.game.AutoSize = true;
             this.game.BackColor = System.Drawing.Color.Transparent;
             this.game.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.game.Location = new System.Drawing.Point(671, 33);
+            this.game.Location = new System.Drawing.Point(776, 36);
             this.game.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.game.Name = "game";
             this.game.Size = new System.Drawing.Size(145, 55);
@@ -83,7 +85,7 @@ namespace TheGameShop
             // platformText
             // 
             this.platformText.AutoSize = true;
-            this.platformText.Location = new System.Drawing.Point(676, 103);
+            this.platformText.Location = new System.Drawing.Point(781, 106);
             this.platformText.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.platformText.Name = "platformText";
             this.platformText.Size = new System.Drawing.Size(0, 25);
@@ -91,7 +93,7 @@ namespace TheGameShop
             // 
             // addGame
             // 
-            this.addGame.Location = new System.Drawing.Point(126, 731);
+            this.addGame.Location = new System.Drawing.Point(231, 734);
             this.addGame.Name = "addGame";
             this.addGame.Size = new System.Drawing.Size(130, 52);
             this.addGame.TabIndex = 3;
@@ -101,7 +103,7 @@ namespace TheGameShop
             // 
             // editGame
             // 
-            this.editGame.Location = new System.Drawing.Point(304, 731);
+            this.editGame.Location = new System.Drawing.Point(409, 734);
             this.editGame.Name = "editGame";
             this.editGame.Size = new System.Drawing.Size(126, 52);
             this.editGame.TabIndex = 4;
@@ -111,7 +113,7 @@ namespace TheGameShop
             // 
             // deleteGame
             // 
-            this.deleteGame.Location = new System.Drawing.Point(482, 731);
+            this.deleteGame.Location = new System.Drawing.Point(587, 734);
             this.deleteGame.Name = "deleteGame";
             this.deleteGame.Size = new System.Drawing.Size(126, 52);
             this.deleteGame.TabIndex = 5;
@@ -122,17 +124,36 @@ namespace TheGameShop
             // recieve
             // 
             this.recieve.AutoSize = true;
-            this.recieve.Location = new System.Drawing.Point(130, 786);
+            this.recieve.Location = new System.Drawing.Point(235, 789);
             this.recieve.Name = "recieve";
             this.recieve.Size = new System.Drawing.Size(126, 25);
             this.recieve.TabIndex = 6;
             this.recieve.Text = "recieved ID:";
             // 
+            // searchBox
+            // 
+            this.searchBox.Location = new System.Drawing.Point(12, 80);
+            this.searchBox.Name = "searchBox";
+            this.searchBox.Size = new System.Drawing.Size(210, 31);
+            this.searchBox.TabIndex = 7;
+            this.searchBox.TextChanged += new System.EventHandler(this.searchBox_TextChanged);
+            // 
+            // searchText
+            // 
+            this.searchText.AutoSize = true;
+            this.searchText.Location = new System.Drawing.Point(12, 52);
+            this.searchText.Name = "searchText";
+            this.searchText.Size = new System.Drawing.Size(86, 25);
+            this.searchText.TabIndex = 8;
+            this.searchText.Text = "Search:";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1240, 820);
+            this.ClientSize = new System.Drawing.Size(1341, 820);
+            this.Controls.Add(this.searchText);
+            this.Controls.Add(this.searchBox);
             this.Controls.Add(this.recieve);
             this.Controls.Add(this.deleteGame);
             this.Controls.Add(this.editGame);
@@ -158,6 +179,8 @@ namespace TheGameShop
         private Button editGame;
         private Button deleteGame;
         private Label recieve;
+        private TextBox searchBox;
+        private Label searchText;
     }
 }
 
