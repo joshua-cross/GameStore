@@ -62,6 +62,15 @@ namespace TheGameShop
 
             game.ForeColor = textColor;
 
+            //if nothings selected then we are going to hide the stock counter so the user cannot select it.
+            if (gameForm.SelectedIndex == -1)
+            {
+                stockBox.Enabled = false;
+                stockBox.Visible = false;
+                confirm.Enabled = false;
+                confirm.Visible = false;
+            }
+
             dbConnect();
 
         }
@@ -69,6 +78,16 @@ namespace TheGameShop
         //this is fired when something is selected from an item is selected from ListBox.
         private void gameForm_SelectedIndexChanged(object sender, System.EventArgs e)
         {
+
+
+            //if the stockbox is still invisible then we want to change it to visible.
+            if(stockBox.Visible == false && stockBox.Enabled == false)
+            {
+                stockBox.Enabled = true;
+                stockBox.Visible = true;
+                confirm.Enabled = true;
+                confirm.Visible = true;
+            }
 
             try
             {
@@ -110,6 +129,8 @@ namespace TheGameShop
                     IDSelected = reader["ID"].ToString();
                     stockSelected = reader["Stock"].ToString();
                     priceSelected = reader["Pricer"].ToString();
+
+                    stockBox.Text = stockSelected;
 
                     //Getting the platform column
                     String gameInfo = "Platform: " + reader["Platform"].ToString() + "\n";
@@ -249,6 +270,34 @@ namespace TheGameShop
             }
 
             //gameForm.Items.Add("Hello");
+        }
+
+        //when the confirm button is clicked we want to update the stock for the selected game.
+        private void confirm_Click(object sender, EventArgs e)
+        {
+            String SQL = "UPDATE Games SET Stock = '" + stockBox.Text.ToString().Trim() + "' WHERE Games = '" + gameForm.SelectedItem.ToString().Trim() + "';";
+
+            try
+            {
+                SqlCommand command = new SqlCommand(SQL, connection);
+
+
+                //howm many rows have been effected.
+                int result = command.ExecuteNonQuery();
+
+                if(result < 0)
+                {
+                    Console.WriteLine("We have failed :(");
+                } else
+                {
+                    Console.WriteLine("We have succedded :)");
+                }
+
+
+            } catch (Exception error)
+            {
+                Console.WriteLine(error.ToString());
+            }
         }
 
         //function that disconnects with the server

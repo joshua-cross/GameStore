@@ -57,6 +57,10 @@ namespace TheGameShop
             this.recieve = new System.Windows.Forms.Label();
             this.searchBox = new System.Windows.Forms.TextBox();
             this.searchText = new System.Windows.Forms.Label();
+            this.stock = new System.Windows.Forms.Label();
+            this.stockBox = new System.Windows.Forms.NumericUpDown();
+            this.confirm = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.stockBox)).BeginInit();
             this.SuspendLayout();
             // 
             // gameForm
@@ -147,11 +151,40 @@ namespace TheGameShop
             this.searchText.TabIndex = 8;
             this.searchText.Text = "Search:";
             // 
+            // stock
+            // 
+            this.stock.AutoSize = true;
+            this.stock.Location = new System.Drawing.Point(1322, 60);
+            this.stock.Name = "stock";
+            this.stock.Size = new System.Drawing.Size(78, 25);
+            this.stock.TabIndex = 9;
+            this.stock.Text = "Stock: ";
+            // 
+            // stockBox
+            // 
+            this.stockBox.Location = new System.Drawing.Point(1327, 88);
+            this.stockBox.Name = "stockBox";
+            this.stockBox.Size = new System.Drawing.Size(120, 31);
+            this.stockBox.TabIndex = 10;
+            // 
+            // confirm
+            // 
+            this.confirm.Location = new System.Drawing.Point(1327, 125);
+            this.confirm.Name = "confirm";
+            this.confirm.Size = new System.Drawing.Size(120, 44);
+            this.confirm.TabIndex = 11;
+            this.confirm.Text = "Confirm";
+            this.confirm.UseVisualStyleBackColor = true;
+            this.confirm.Click += new System.EventHandler(this.confirm_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1341, 879);
+            this.ClientSize = new System.Drawing.Size(1489, 879);
+            this.Controls.Add(this.confirm);
+            this.Controls.Add(this.stockBox);
+            this.Controls.Add(this.stock);
             this.Controls.Add(this.searchText);
             this.Controls.Add(this.searchBox);
             this.Controls.Add(this.recieve);
@@ -165,6 +198,7 @@ namespace TheGameShop
             this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "Form1";
             this.Text = "Form1";
+            ((System.ComponentModel.ISupportInitialize)(this.stockBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -181,6 +215,9 @@ namespace TheGameShop
         private Label recieve;
         private TextBox searchBox;
         private Label searchText;
+        private Label stock;
+        private NumericUpDown stockBox;
+        private Button confirm;
     }
 }
 
